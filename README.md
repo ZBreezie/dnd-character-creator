@@ -1,4 +1,4 @@
-# D&D Character Generator test2
+# D&D Character Generator test
 
 ## Purpose
 Generate a character at random for your next D&D campaign! Using the D&D 5E API, this application is perfect for getting quick character details for beginners, NPC's, or one-shots. 
