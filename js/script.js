@@ -71,7 +71,7 @@ function setNameFromLocal() {
  */
 function getNameFromApi() {
     console.log("Names not found in localstorage; calling database");
-    var apiUrl = "http://hp-api.herokuapp.com/api/characters";
+    var apiUrl = "https://hp-api.herokuapp.com/api/characters";
     
     return new Promise(function(resolve, reject) {
         fetch(apiUrl)
