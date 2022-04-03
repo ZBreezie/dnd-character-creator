@@ -26,12 +26,12 @@ async function getNewCharacter() {
 
     //checks to see if localstorage has names, calls either the API
     //call function or the setNameFromLocal function
-    if (localStorage.getItem("names")) {
-        setNameFromLocal();
-    }
-    else {
-        requests.push(getNameFromApi());
-    }
+    // if (localStorage.getItem("names")) {
+    //     setNameFromLocal();
+    // }
+    // else {
+    //     requests.push(getNameFromApi());
+    // }
 
     //this Promise.all() function uses the await keyword to
     //take the promises and WAIT until they have all been
@@ -69,18 +69,18 @@ function setNameFromLocal() {
  * Returns a promise that will eventually contain a long
  * list of names
  */
-function getNameFromApi() {
-    console.log("Names not found in localstorage; calling database");
-    var apiUrl = "https://hp-api.herokuapp.com/api/characters";
+// function getNameFromApi() {
+//     console.log("Names not found in localstorage; calling database");
+//     var apiUrl = "https://hp-api.herokuapp.com/api/characters";
     
-    return new Promise(function(resolve, reject) {
-        fetch(apiUrl)
-        .then(function(response) {
-            return resolve(response.json())
-        })
-        .catch(reject);
-    });
-}
+//     return new Promise(function(resolve, reject) {
+//         fetch(apiUrl)
+//         .then(function(response) {
+//             return resolve(response.json())
+//         })
+//         .catch(reject);
+//     });
+// }
 
 /**
  * Receives a resolve promise containing an array of names,
