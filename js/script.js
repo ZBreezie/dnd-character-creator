@@ -60,7 +60,7 @@ function setNameFromLocal() {
     console.log("Names found in localstorage; drawing from there");
 
     characterNames = JSON.parse(localStorage.getItem("names"));
-    charName.textContent = "Your character is " 
+    charName.textContent = "Your character is: " 
         + characterNames[Math.floor(Math.random() * characterNames.length)];
     console.log("setNameFromLocal() complete");
 }
