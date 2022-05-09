@@ -26,12 +26,12 @@ async function getNewCharacter() {
 
     //checks to see if localstorage has names, calls either the API
     //call function or the setNameFromLocal function
-    // if (localStorage.getItem("names")) {
-    //     setNameFromLocal();
-    // }
-    // else {
-    //     requests.push(getNameFromApi());
-    // }
+    if (localStorage.getItem("names")) {
+        setNameFromLocal();
+    }
+    else {
+        requests.push(getNameFromApi());
+    }
 
     //this Promise.all() function uses the await keyword to
     //take the promises and WAIT until they have all been
@@ -41,9 +41,9 @@ async function getNewCharacter() {
     setTrait("#char-race", resolves[0]);
     setTrait("#char-class", resolves[1]);
     setTrait("#char-align", resolves[2]);
-    // if (!localStorage.getItem("names")) {
-    //     setNameFromApi(resolves[3]);
-    // }
+    if (!localStorage.getItem("names")) {
+        setNameFromApi(resolves[3]);
+    }
 
     //we can now safely call changeImg() 
     //as the class information will surely be there
@@ -69,32 +69,42 @@ function setNameFromLocal() {
  * Returns a promise that will eventually contain a long
  * list of names
  */
-// function getNameFromApi() {
-//     console.log("Names not found in localstorage; calling database");
-//     var apiUrl = "https://hp-api.herokuapp.com/api/characters";
+function getNameFromApi() {
+    console.log("Names not found in localstorage; calling database");
+    var namesApi = "https://agile-depths-37174.herokuapp.com/names";
     
-//     return new Promise(function(resolve, reject) {
-//         fetch(apiUrl)
-//         .then(function(response) {
-//             return resolve(response.json())
-//         })
-//         .catch(reject);
-//     });
-// }
+    return new Promise(function(resolve, reject) {
+        fetch(namesApi)
+        .then(function(response) {
+            return resolve(response.json())
+        })
+        .catch(reject);
+    });
+}
 
 /**
  * Receives a resolve promise containing an array of names,
  * and then randomly picks one for the character, and THEN
  * sends that list to localstorage to minimize database calls 
  */
-function setNameFromApi(resolves) {
-    var characterNames;
-
-    characterNames = resolves.contents.names;
-    charName.textContent = "Your character is " 
-    + characterNames[Math.floor(Math.random() * characterNames.length)];
-
-    localStorage.setItem("names", JSON.stringify(characterNames));
+ function setNameFromApi(resolves) {
+    console.log(resolves);
+  
+    firstNamesArr = resolves.firstName;
+    lastNamesArr = resolves.lastName;
+  
+    console.log(firstNamesArr);
+  
+    charName.textContent =
+      'Your character is ' +
+      // first
+      firstNamesArr[Math.floor(Math.random() * firstNamesArr.length)] +
+      ' ' +
+      // last
+      lastNamesArr[Math.floor(Math.random() * lastNamesArr.length)];
+  
+    localStorage.setItem('firstNames', JSON.stringify(firstNamesArr));
+    localStorage.setItem('lastNames', JSON.stringify(lastNamesArr));
 }
 
 // Concatenizes the "src" with the randomly generated class
