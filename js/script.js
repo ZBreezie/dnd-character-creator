@@ -96,7 +96,7 @@ function getNameFromApi() {
     console.log(firstNamesArr);
   
     charName.textContent =
-      'Your character is ' +
+      'Your character is: ' +
       // first
       firstNamesArr[Math.floor(Math.random() * firstNamesArr.length)] +
       ' ' +
