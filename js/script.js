@@ -71,7 +71,7 @@ function setNameFromLocal() {
  */
 function getNameFromApi() {
     console.log("Names not found in localstorage; calling database");
-    var namesApi = "https://agile-depths-37174.herokuapp.com/names";
+    var namesApi = "https://name-api-59d3dbc42e71.herokuapp.com//names";
     
     return new Promise(function(resolve, reject) {
         fetch(namesApi)
