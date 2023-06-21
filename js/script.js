@@ -71,6 +71,7 @@ function setNameFromLocal() {
  */
 function getNameFromApi() {
     console.log("Names not found in localstorage; calling database");
+    // change names test commit
     var namesApi = "https://name-api-59d3dbc42e71.herokuapp.com/names";
     
     return new Promise(function(resolve, reject) {
