@@ -478,7 +478,6 @@ genBtn.addEventListener("click", function() {
     var i = 0;
     var limit = 8
     var ref = setInterval(() => {
-        console.log(i);
         getNewCharacter(); i++;
         if (i == limit) clearInterval(ref);
     }, 75);
