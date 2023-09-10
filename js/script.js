@@ -475,14 +475,14 @@ setFromStorage(); //needs to run every time program begins
 genBtn.addEventListener("click", function() {
     getNewCharacter();
     $("#sub-cards").removeClass("hide")
-    // var i = 0;
-    // var limit = 6
-    // var ref = setInterval(() => {
-    //     console.log(i);
-    //     getNewCharacter(); i++;
-    //     if (i == limit) clearInterval(ref);
-    // }, 50);
-    // $("#sub-cards").removeClass("hide");
+    var i = 0;
+    var limit = 8
+    var ref = setInterval(() => {
+        console.log(i);
+        getNewCharacter(); i++;
+        if (i == limit) clearInterval(ref);
+    }, 75);
+    $("#sub-cards").removeClass("hide");
 });
 
 $("#get-saved-char").click(getSavedChar);
