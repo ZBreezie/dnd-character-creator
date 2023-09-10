@@ -66,44 +66,44 @@ function setNameFromLocal() {
  * Returns a promise that will eventually contain a long
  * list of names
  */
-function getNameFromApi() {
-    console.log("Names not found in localstorage; calling database");
-    // test commit
-    var namesApi = "https://name-api-59d3dbc42e71.herokuapp.com/names";
+// function getNameFromApi() {
+//     console.log("Names not found in localstorage; calling database");
+//     // test commit
+//     var namesApi = "https://name-api-59d3dbc42e71.herokuapp.com/names";
     
-    return new Promise(function(resolve, reject) {
-        fetch(namesApi)
-        .then(function(response) {
-            return resolve(response.json())
-        })
-        .catch(reject);
-    });
-}
+//     return new Promise(function(resolve, reject) {
+//         fetch(namesApi)
+//         .then(function(response) {
+//             return resolve(response.json())
+//         })
+//         .catch(reject);
+//     });
+// }
 
 /**
  * Receives a resolve promise containing an array of names,
  * and then randomly picks one for the character, and THEN
  * sends that list to localstorage to minimize database calls 
  */
- function setNameFromApi(resolves) {
-    console.log(resolves);
+//  function setNameFromApi(resolves) {
+//     console.log(resolves);
   
-    firstNamesArr = resolves.firstName;
-    lastNamesArr = resolves.lastName;
+//     firstNamesArr = resolves.firstName;
+//     lastNamesArr = resolves.lastName;
   
-    console.log(firstNamesArr);
+//     console.log(firstNamesArr);
   
-    charName.textContent =
-      'Your character is: ' +
-      // first
-      firstNamesArr[Math.floor(Math.random() * firstNamesArr.length)] +
-      ' ' +
-      // last
-      lastNamesArr[Math.floor(Math.random() * lastNamesArr.length)];
+//     charName.textContent =
+//       'Your character is: ' +
+//       // first
+//       firstNamesArr[Math.floor(Math.random() * firstNamesArr.length)] +
+//       ' ' +
+//       // last
+//       lastNamesArr[Math.floor(Math.random() * lastNamesArr.length)];
   
-    localStorage.setItem('firstNames', JSON.stringify(firstNamesArr));
-    localStorage.setItem('lastNames', JSON.stringify(lastNamesArr));
-}
+//     localStorage.setItem('firstNames', JSON.stringify(firstNamesArr));
+//     localStorage.setItem('lastNames', JSON.stringify(lastNamesArr));
+// }
 
 // Concatenizes the "src" with the randomly generated class
 function changeImg() {
