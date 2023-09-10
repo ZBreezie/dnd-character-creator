@@ -23,15 +23,7 @@ async function getNewCharacter() {
     requests.push(getTrait("races"));
     requests.push(getTrait("classes"));
     requests.push(getTrait("alignments"));
-
-    //checks to see if localstorage has names, calls either the API
-    //call function or the setNameFromLocal function
-    if (localStorage.getItem("names")) {
-        setNameFromLocal();
-    }
-    else {
-        requests.push(getNameFromApi());
-    }
+    setNameFromLocal();
 
     //this Promise.all() function uses the await keyword to
     //take the promises and WAIT until they have all been
@@ -41,9 +33,6 @@ async function getNewCharacter() {
     setTrait("#char-race", resolves[0]);
     setTrait("#char-class", resolves[1]);
     setTrait("#char-align", resolves[2]);
-    if (!localStorage.getItem("names")) {
-        setNameFromApi(resolves[3]);
-    }
 
     //we can now safely call changeImg() 
     //as the class information will surely be there
@@ -57,12 +46,20 @@ async function getNewCharacter() {
  * Sets the character's name from the localstorage
  */
 function setNameFromLocal() {
-    console.log("Names found in localstorage; drawing from there");
+    
+    firstNamesArr = ["", "Naga", "Nora", "Mira", "Lenny", "Trogdor", "Fliora", "Yatta", "Demetra", "Tharxus", "Galasor", "Heijor", "Samaris", "Taric", "Koltha", "Olonorin", "Sumethil", "Ren", "Sulu","Willow", "Sorsha", "Nyota", "Aldwyn", "Troubadoura", "Jimothy", "Trout", "Axl", "Craig", "Craggle", "Shiro", "ED-209", "Nephew", "Sundai", "Uncle"];
+    lastNamesArr = ["", "Sadow", "Dumbo", "Mirang", "Kravitz", "LeFence", "Annay", "Wurmon", "Sailsong","Yierdon", "Datstrova", "Yilol", "Inahana", "Birchshine", "Gem", "Elderbreeze", "Lightgroove", "Koltha", "Moonsong", "Stormbreaker", "Willow","Wazowski", "Berbigglebottom", "Voncle", "Bongle", "Shrimp", "Cousins", "Schule", "Soup", "Krakor", "Bean"];
 
-    characterNames = JSON.parse(localStorage.getItem("names"));
-    charName.textContent = "Your character is: " 
-        + characterNames[Math.floor(Math.random() * characterNames.length)];
-    console.log("setNameFromLocal() complete");
+    charName.textContent =
+    'Your character is: ' +
+    // first
+    firstNamesArr[Math.floor(Math.random() * firstNamesArr.length)] +
+    ' ' +
+    // last
+    lastNamesArr[Math.floor(Math.random() * lastNamesArr.length)];
+
+    localStorage.setItem('firstNames', JSON.stringify(firstNamesArr));
+    localStorage.setItem('lastNames', JSON.stringify(lastNamesArr));
 }
 
 /**
